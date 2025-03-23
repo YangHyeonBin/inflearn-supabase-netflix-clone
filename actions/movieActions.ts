@@ -66,7 +66,8 @@ export async function getFavoritedMovies({ search = "" }: { search: string }) {
         .from("movie")
         .select()
         .not("favorited_date", "is", null)
-        .like("title", `%${search}%`)
+        // .like("title", `%${search}%`)
+        .ilike("title", `%${search.trim().replace(/\s+/g, "%")}%`) // 대소문자 구분 X
         .order("favorited_date", { ascending: false })
         .order("id", { ascending: true });
 
@@ -91,7 +92,8 @@ export async function getNonFavoritedMovies({
         .from("movie")
         .select()
         .is("favorited_date", null)
-        .like("title", `%${search}%`)
+        // .like("title", `%${search}%`)
+        .ilike("title", `%${search.trim().replace(/\s+/g, "%")}%`) // 대소문자 구분 X
         .order("release_date", { ascending: false })
         .order("id", { ascending: true })
         .range((page - 1) * pageSize, page * pageSize - 1);
