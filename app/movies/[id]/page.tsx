@@ -1,6 +1,28 @@
-import { useGetMovieById } from "services/useMovieQueries";
 import Ui from "./Ui";
 import { getMovieById } from "actions/movieActions";
+
+// 각 영화 페이지에 맞는 동적인 메타데이터를 생성
+export async function generateMetadata({
+    params,
+}: // searchParams,
+{
+    params: { id: string };
+    // searchParams: { search: string };
+}) {
+    const movie = await getMovieById({
+        movieId: Number(params.id),
+    });
+
+    return {
+        title: movie?.title || "",
+        description: movie?.overview || "",
+
+        // 메타데이터를 위한 이미지 URL - og이미지. 사이트 url 공유 시 보이는 이미지임
+        openGraph: {
+            images: [movie?.image_url || ""],
+        },
+    };
+}
 
 export default async function MovieDetail({
     params,
