@@ -58,8 +58,10 @@ export default async function MovieDetail({
     }
 
     return (
-        <main className="absolute top-0 bottom-0 left-0 right-0 flex items-center bg-blue-50">
-            <Ui movie={movie} />
+        <main className="h-screen w-full flex items-center justify-center bg-blue-50">
+            <div className="container mx-auto px-4 max-w-6xl">
+                <Ui movie={movie} />
+            </div>
         </main>
     );
 }
