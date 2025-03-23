@@ -44,6 +44,7 @@ export type Database = {
       }
       movie: {
         Row: {
+          favorited_date: string | null
           id: number
           image_url: string
           overview: string
@@ -53,6 +54,7 @@ export type Database = {
           vote_average: number
         }
         Insert: {
+          favorited_date?: string | null
           id?: number
           image_url: string
           overview: string
@@ -62,6 +64,7 @@ export type Database = {
           vote_average: number
         }
         Update: {
+          favorited_date?: string | null
           id?: number
           image_url?: string
           overview?: string
