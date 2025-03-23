@@ -1,8 +1,11 @@
 "use client";
 
 import Logo from "./Logo";
+import { useSearch } from "contexts/SearchContext";
 
 export default function Header() {
+    const { search, setSearch } = useSearch();
+
     return (
         <header className="fixed top-0 left-0 right-0 z-50 px-4 py-2 bg-black flex items-center justify-between">
             <nav className="flex gap-4 items-center">
@@ -19,6 +22,8 @@ export default function Header() {
                     type="text"
                     placeholder="Search movies..."
                     className="bg-transparent text-white focus:outline-none"
+                    value={search}
+                    onChange={(e) => setSearch(e.target.value)}
                 />
             </div>
         </header>
