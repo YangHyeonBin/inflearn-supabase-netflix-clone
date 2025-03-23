@@ -2,16 +2,26 @@ import Ui from "./Ui";
 import { getMovieById } from "actions/movieActions";
 
 // 각 영화 페이지에 맞는 동적인 메타데이터를 생성
-export async function generateMetadata({
-    params,
-}: // searchParams,
-{
-    params: { id: string };
-    // searchParams: { search: string };
-}) {
+export async function generateMetadata({ params }: { params: { id: string } }) {
+    // params를 사용하기 전에 await으로 처리
+    const resolvedParams = await params;
+
+    // 메타 데이터 표시를 위해 server component에서 데이터를 가져옴
+    // 다만, server component라 react query 사용 불가
+    // const {
     const movie = await getMovieById({
-        movieId: Number(params.id),
+        movieId: Number(resolvedParams.id),
     });
+
+    if (!movie) {
+        return {
+            title: "",
+            description: "",
+            openGraph: {
+                images: [""],
+            },
+        };
+    }
 
     return {
         title: movie?.title || "",
@@ -35,12 +45,6 @@ export default async function MovieDetail({
     // 메타 데이터 표시를 위해 server component에서 데이터를 가져옴
     // 다만, server component라 react query 사용 불가
     // const {
-    //     data: movie,
-    //     isLoading,
-    //     error,
-    // } = useGetMovieById({
-    //     movieId: Number(resolvedParams.id),
-    // });
     const movie = await getMovieById({
         movieId: Number(resolvedParams.id),
     });
