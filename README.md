@@ -2,7 +2,7 @@
 
 -   TMDB에서 제공하는 영화 데이터를 이용한 간단한 Netflix 클론 프로젝트
 
-![초기 페이지](https://velog.velcdn.com/images/ekil_like/post/5b82c59c-efbe-4471-ad74-8dd915ca24cd/image.png)
+![](https://velog.velcdn.com/images/ekil_like/post/cf4af55a-e2c8-40e8-9f77-74936e8369e8/image.png)
 ![검색 중](https://velog.velcdn.com/images/ekil_like/post/48ec42a6-54be-4a68-8621-7a7271d5a60f/image.png)
 ![영화 상세 페이지](https://velog.velcdn.com/images/ekil_like/post/eae67fb9-e70c-4ef6-8d08-c0547014de49/image.png)
 
