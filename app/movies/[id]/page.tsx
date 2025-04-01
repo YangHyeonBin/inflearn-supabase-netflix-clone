@@ -2,7 +2,11 @@ import Ui from "./Ui";
 import { getMovieById } from "actions/movieActions";
 
 // 각 영화 페이지에 맞는 동적인 메타데이터를 생성
-export async function generateMetadata({ params }: { params: { id: string } }) {
+export async function generateMetadata({
+    params,
+}: {
+    params: Promise<{ id: string }>;
+}) {
     // params를 사용하기 전에 await으로 처리
     const resolvedParams = await params;
 
@@ -37,7 +41,7 @@ export async function generateMetadata({ params }: { params: { id: string } }) {
 export default async function MovieDetail({
     params,
 }: {
-    params: { id: string };
+    params: Promise<{ id: string }>;
 }) {
     // params를 사용하기 전에 await으로 처리
     const resolvedParams = await params;
